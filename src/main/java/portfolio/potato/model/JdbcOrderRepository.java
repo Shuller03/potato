@@ -4,6 +4,8 @@ import java.sql.Types;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.asm.Type;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -61,6 +63,16 @@ public class JdbcOrderRepository implements OrderRepository {
         return order;
     }
 
+    @Override
+    public List<PotatoOrder> findByDeliveryZip(String deliveryZip) {
+        return null;
+    }
+
+    @Override
+    public List<PotatoOrder> readOrderByDeliveryZipAndPlacedAtBetween(String deliveryZip, java.sql.Date startDate, java.sql.Date endDate) {
+        return null;
+    }
+
     private long savePotato(Long orderId, int orderKey, Potato potato) {
         potato.setCreatedAt(new Date());
         PreparedStatementCreatorFactory pscf =
@@ -96,5 +108,61 @@ public class JdbcOrderRepository implements OrderRepository {
                             + "values (?, ?, ?)",
                     ingredientRef, potatoId, key++);
         }
+    }
+
+
+    @Override
+    public <S extends PotatoOrder> Iterable<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public Optional<PotatoOrder> findById(String s) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(String s) {
+        return false;
+    }
+
+    @Override
+    public Iterable<PotatoOrder> findAll() {
+        return null;
+    }
+
+    @Override
+    public Iterable<PotatoOrder> findAllById(Iterable<String> strings) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(String s) {
+
+    }
+
+    @Override
+    public void delete(PotatoOrder entity) {
+
+    }
+
+    @Override
+    public void deleteAllById(Iterable<? extends String> strings) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends PotatoOrder> entities) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
     }
 }
